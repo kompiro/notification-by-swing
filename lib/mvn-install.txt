@@ -1,0 +1,3 @@
+Please run below
+
+mvn install:install-file -DgroupId=net.sf -DartifactId=jcarrierpigeon -Dversion=1.3 -Dfile=JCarrierPigeon-1.3.jar -Dpackaging=true
