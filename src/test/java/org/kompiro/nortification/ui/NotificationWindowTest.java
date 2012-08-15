@@ -1,35 +1,22 @@
 package org.kompiro.nortification.ui;
 
-import java.awt.event.ActionEvent;
-
-import javax.swing.AbstractAction;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
 
 public class NotificationWindowTest {
 	
 	public static void main(String[] args) {
-		JFrame frame = new JFrame();
-		JPanel jPanel = new JPanel();
 		final NotificationWindow window = new NotificationWindow();
+		window.setLocation(0, -1000);
 		window.setTitle("This is title.");
 		window.setMessage("message");
 		window.setType(NotificationType.SUCCESS);
 		window.pack();
+		window.notifyUI();
 		
-		jPanel.add(new JButton(new AbstractAction() {
-			private static final long serialVersionUID = 1L;
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				window.notifyUI();
-			}
-		}));
-		
-		frame.setContentPane(jPanel);
-		frame.pack();
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setVisible(true);
-		
+		try {
+			Thread.sleep(3000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }
