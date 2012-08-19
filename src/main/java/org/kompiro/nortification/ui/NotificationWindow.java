@@ -20,10 +20,12 @@ import org.pushingpixels.trident.swing.AWTPropertyInterpolators;
 
 public class NotificationWindow extends JWindow{
 	
+	private static final int DEFAULT_BASE_BORDER = 50;
 	private static final long serialVersionUID = 1L;
 	private static final int DEFAULT_DURATION = 3000;
 	private NotificationPanel contentPane;
 	private int duration = DEFAULT_DURATION;
+	private int border = DEFAULT_BASE_BORDER;
 
 	static {
 		// can't load property interpolators from trident-plugin.properties
@@ -64,18 +66,22 @@ public class NotificationWindow extends JWindow{
 		this.duration = duration;
 	}
 	
+	public void setBorder(int border) {
+		this.border = border;
+	}
+	
 	public void notifyUI(){
 		this.pack();
 		GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
 		GraphicsDevice defaultScreen = ge.getDefaultScreenDevice();
 		Rectangle rect = defaultScreen.getDefaultConfiguration().getBounds();
-		int x = (int)rect.getMaxX() - this.getWidth() - 50;
+		int x = (int)rect.getMaxX() - this.getWidth() - border;
 		int y = (int)rect.getMaxY();
 		this.setLocation(x, y);
 		this.setVisible(true);
 
 		Timeline moveTimeline = new Timeline(this);
-		moveTimeline.addPropertyToInterpolate("location", new Point(x, y), new Point(x,y - this.getHeight() - 50));
+		moveTimeline.addPropertyToInterpolate("location", new Point(x, y), new Point(x,y - this.getHeight() - border));
 		Timer hideTimer = new Timer((int) (duration + moveTimeline.getDuration()), new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent event) {
