@@ -8,11 +8,15 @@ import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.net.URL;
+import java.util.Set;
 
 import javax.swing.JWindow;
 import javax.swing.Timer;
 
 import org.pushingpixels.trident.Timeline;
+import org.pushingpixels.trident.TridentConfig;
+import org.pushingpixels.trident.interpolator.PropertyInterpolator;
+import org.pushingpixels.trident.swing.AWTPropertyInterpolators;
 
 public class NotificationWindow extends JWindow{
 	
@@ -20,6 +24,19 @@ public class NotificationWindow extends JWindow{
 	private static final int DEFAULT_DURATION = 3000;
 	private NotificationPanel contentPane;
 	private int duration = DEFAULT_DURATION;
+
+	static {
+		// can't load property interpolators from trident-plugin.properties
+		// because TridentConfig constructor calls Thread.currentThread().getContextClassLoader().
+		// it's not good for some environment.(ex. maven)
+		// So ,these code adds interpolators manually.
+        TridentConfig config = TridentConfig.getInstance();
+        @SuppressWarnings("rawtypes")
+		Set<PropertyInterpolator> propertyInterpolators = new AWTPropertyInterpolators().getPropertyInterpolators();
+        for (PropertyInterpolator<?> propertyInterpolator : propertyInterpolators) {
+            config.addPropertyInterpolator(propertyInterpolator);
+		}
+	}
 	
 	public NotificationWindow() {
 		contentPane = new NotificationPanel();
