@@ -1,5 +1,6 @@
 package org.kompiro.nortification.ui;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GradientPaint;
@@ -18,13 +19,11 @@ import net.miginfocom.swing.MigLayout;
 
 public class NotificationPanel extends JPanel {
 
-	private NotificationType type = NotificationType.SUCCESS;
+	private static final Color DEFAULT_COLOR = new Color(255,255,153);
 	private static final long serialVersionUID = 1L;
 	private JTextArea message;
 	private JLabel title;
 	private JLabel icon;
-	
-	
 
 	/**
 	 * Create the panel.
@@ -47,8 +46,8 @@ public class NotificationPanel extends JPanel {
 		message.setSize(new Dimension(200,60));
 		message.setOpaque(false);
 		add(message, "cell 1 1 2 1,grow");
+		setColor(DEFAULT_COLOR);
 		
-		setBackground(type.getColor());
 	}
 	
 	@Override
@@ -78,10 +77,9 @@ public class NotificationPanel extends JPanel {
 		if(iconURL == null) throw new IllegalArgumentException("iconURL is null");
 		this.icon.setIcon(new ImageIcon(iconURL));
 	}
-	
-	public void setType(NotificationType type){
-		this.type = type;
-		setBackground(type.getColor());
+
+	public void setColor(Color color) {
+		setBackground(color);
 	}
 
 }

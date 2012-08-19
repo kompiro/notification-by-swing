@@ -172,9 +172,9 @@
       <version>4.2</version>
     </dependency>
     <dependency>
-      <groupId>net.sf</groupId>
-      <artifactId>jcarrierpigeon</artifactId>
-      <version>1.3</version>
+    	<groupId>org.pushingpixels</groupId>
+    	<artifactId>trident</artifactId>
+    	<version>1.3</version>
     </dependency>
     <dependency>
       <groupId>junit</groupId>
