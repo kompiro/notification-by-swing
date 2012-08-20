@@ -52,7 +52,7 @@
   </repositories>
 
   <name>ui</name>
-  <url>http://kompiro.org/notification</url>
+  <url>http://github.com/kompiro/notification-by-swing</url>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
