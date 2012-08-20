@@ -1,4 +1,4 @@
-package org.kompiro.nortification.ui;
+package org.kompiro.notification.ui;
 
 import java.awt.Color;
 import java.awt.GraphicsDevice;
@@ -7,6 +7,8 @@ import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.net.URL;
 import java.util.Set;
 
@@ -26,6 +28,7 @@ public class NotificationWindow extends JWindow{
 	private NotificationPanel contentPane;
 	private int duration = DEFAULT_DURATION;
 	private int border = DEFAULT_BASE_BORDER;
+	private boolean stickMode;
 
 	static {
 		// can't load property interpolators from trident-plugin.properties
@@ -44,30 +47,68 @@ public class NotificationWindow extends JWindow{
 		contentPane = new NotificationPanel();
         contentPane.setOpaque(false);
         setContentPane(contentPane);
+        contentPane.addCloseMouseListener(new MouseAdapter() {
+        	@Override
+        	public void mouseClicked(MouseEvent e) {
+        		close();
+        	}
+		});
 	}
 	
+	/**
+	 * set icon image url
+	 * @param iconURL
+	 */
 	public void setIconURL(final URL iconURL){
 		contentPane.setIconURL(iconURL);
 	}
 	
+	/**
+	 * set title
+	 * @param title
+	 */
 	public void setTitle(final String title){
 		contentPane.setTitle(title);
 	}
 	
+	/**
+	 * set message
+	 * @param message
+	 */
 	public void setMessage(final String message) {
 		contentPane.setMessage(message);
 	}
 	
+	/**
+	 * set window color
+	 * @param color
+	 */
 	public void setColor(final Color color){
 		contentPane.setColor(color);
 	}
 	
+	/**
+	 * set duration to show the window
+	 * @param duration
+	 */
 	public void setDuration(int duration){
 		this.duration = duration;
 	}
 	
+	/**
+	 * set border from display edge
+	 * @param border
+	 */
 	public void setBorder(int border) {
 		this.border = border;
+	}
+	
+	/**
+	 * set stick window mode
+	 * @param stickMode
+	 */
+	public void setStickMode(boolean stickMode){
+		this.stickMode = stickMode;
 	}
 	
 	public void notifyUI(){
@@ -82,14 +123,26 @@ public class NotificationWindow extends JWindow{
 
 		Timeline moveTimeline = new Timeline(this);
 		moveTimeline.addPropertyToInterpolate("location", new Point(x, y), new Point(x,y - this.getHeight() - border));
-		Timer hideTimer = new Timer((int) (duration + moveTimeline.getDuration()), new ActionListener(){
+		int delay = duration + (int) moveTimeline.getDuration();
+		Timer hideTimer = new Timer(delay, new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent event) {
-				NotificationWindow.this.setVisible(false);
+				close();
 			}
+
 		});
 		moveTimeline.play();
-		hideTimer.start();
+		if(stickMode == false){
+			hideTimer.start();
+		}
+	}
+
+	private void close() {
+		setVisible(false);
+		notifyClose();
+	}
+	
+	protected void notifyClose() {
 	}
 	
 }
