@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>ui - このプロジェクトについて</title>
+    <title>ui - report.dependency-info.title</title>
     <style type="text/css" media="all">
       @import url("./css/maven-base.css");
       @import url("./css/maven-theme.css");
@@ -48,8 +48,8 @@
                           <a href="project-info.html" title="プロジェクト情報">プロジェクト情報</a>
                     <ul>
                       <li class="none">
-            <strong>このプロジェクトについて</strong>
-          </li>
+                          <a href="index.html" title="このプロジェクトについて">このプロジェクトについて</a>
+            </li>
                       <li class="none">
                           <a href="plugin-management.html" title="Plugin Management">Plugin Management</a>
             </li>
@@ -57,8 +57,8 @@
                           <a href="distribution-management.html" title="Distribution Management">Distribution Management</a>
             </li>
                       <li class="none">
-                          <a href="dependency-info.html" title="report.dependency-info.name">report.dependency-info.name</a>
-            </li>
+            <strong>report.dependency-info.name</strong>
+          </li>
                       <li class="none">
                           <a href="source-repository.html" title="ソースリポジトリ">ソースリポジトリ</a>
             </li>
@@ -98,7 +98,16 @@
     </div>
     <div id="bodyColumn">
       <div id="contentBox">
-        <div class="section"><h2>&#x3053;&#x306e;&#x30d7;&#x30ed;&#x30b8;&#x30a7;&#x30af;&#x30c8;&#x306b;&#x3064;&#x3044;&#x3066; ui<a name="a_ui"></a></h2><a name="a_ui"></a><p>&#x3053;&#x306e;&#x30d7;&#x30ed;&#x30b8;&#x30a7;&#x30af;&#x30c8;&#x306b;&#x3064;&#x3044;&#x3066;&#x306e;&#x8aac;&#x660e;&#x306f;&#x73fe;&#x5728;&#x7528;&#x610f;&#x3055;&#x308c;&#x3066;&#x3044;&#x307e;&#x305b;&#x3093;&#x3002;</p></div>
+        <div class="section"><h2>report.dependency-info.title<a name="report.dependency-info.title"></a></h2><a name="report.dependency-info.title"></a><div class="section"><h3>Apache Maven<a name="Apache_Maven"></a></h3><a name="Apache_Maven"></a><div class="source"><pre>&lt;dependency&gt;
+  &lt;groupId&gt;org.kompiro.notification&lt;/groupId&gt;
+  &lt;artifactId&gt;ui&lt;/artifactId&gt;
+  &lt;version&gt;0.0.4-SNAPSHOT&lt;/version&gt;
+  &lt;type&gt;${project.packaging&lt;/type&gt;
+&lt;/dependency&gt;</pre></div></div><div class="section"><h3>Apache Buildr<a name="Apache_Buildr"></a></h3><a name="Apache_Buildr"></a><div class="source"><pre>'org.kompiro.notification:ui:${project.packaging:0.0.4-SNAPSHOT'</pre></div></div><div class="section"><h3>Apache Ant<a name="Apache_Ant"></a></h3><a name="Apache_Ant"></a><div class="source"><pre>&lt;dependency org=&quot;org.kompiro.notification&quot; name=&quot;ui&quot; rev=&quot;0.0.4-SNAPSHOT&quot;&gt;
+  &lt;artifact name=&quot;ui&quot; type=&quot;${project.packaging&quot; /&gt;
+&lt;/dependency&gt;</pre></div></div><div class="section"><h3>Groovy Grape<a name="Groovy_Grape"></a></h3><a name="Groovy_Grape"></a><div class="source"><pre>@Grapes(
+@Grab(group='org.kompiro.notification', module='ui', version='0.0.4-SNAPSHOT')
+)</pre></div></div><div class="section"><h3>Grails<a name="Grails"></a></h3><a name="Grails"></a><div class="source"><pre>compile 'org.kompiro.notification:ui:0.0.4-SNAPSHOT'</pre></div></div><div class="section"><h3>Leiningen<a name="Leiningen"></a></h3><a name="Leiningen"></a><div class="source"><pre>[org.kompiro.notification/ui &quot;0.0.4-SNAPSHOT&quot;]</pre></div></div><div class="section"><h3>SBT<a name="SBT"></a></h3><a name="SBT"></a><div class="source"><pre>libraryDependencies += &quot;org.kompiro.notification&quot; %% &quot;ui&quot; % &quot;0.0.4-SNAPSHOT&quot;</pre></div></div></div>
       </div>
     </div>
     <div class="clear">
