@@ -17,12 +17,10 @@
       <name>kompiro.org repoisitory</name>
       <url>scp://kompiro.org/home/kompiro/kompiro.org/maven</url>
     </repository>
-    <!--
     <site>
       <id>github</id>
-      <url>scm:git:git@github.com:kompiro/notification-by-swing.git</url>
+      <url>gitsite:git@github.com/kompiro/notification-by-swing.git</url>
     </site>
-    -->
   </distributionManagement>
   <repositories>
     <repository>
@@ -40,6 +38,7 @@
       <name>java.net Maven Repository</name>
       <url>http://download.java.net/maven/2</url>
       <releases>
+        <enabled>true</enabled>
       </releases>
       <snapshots>
         <enabled>false</enabled>
@@ -51,7 +50,8 @@
     </repository>
   </repositories>
 
-  <name>ui</name>
+  <name>Swing Desktop Notifier</name>
+  <description>This is simple notification window library implemented by swing.</description>
   <url>http://github.com/kompiro/notification-by-swing</url>
 
   <properties>
@@ -80,37 +80,17 @@
         <artifactId>maven-site-plugin</artifactId>
         <version>3.1</version>
         <configuration>
-          <locales>ja</locales>
+          <locales>en</locales>
           <inputEncoding>${project.build.sourceEncoding}</inputEncoding>
           <outputEncoding>${project.reporting.outputEncoding}</outputEncoding>
         </configuration>
         <dependencies>
           <dependency>
-            <groupId>org.apache.maven.wagon</groupId>
-            <artifactId>wagon-scm</artifactId>
-            <version>2.2</version>
-          </dependency>
-          <dependency>
-            <groupId>org.apache.maven.scm</groupId>
-            <artifactId>maven-scm-api</artifactId>
-            <version>1.7</version>
-          </dependency>
-          <dependency>
-            <groupId>org.apache.maven.scm</groupId>
-            <artifactId>maven-scm-manager-plexus</artifactId>
-            <version>1.7</version>
-          </dependency>
-          <dependency>
-            <groupId>org.apache.maven.scm</groupId>
-            <artifactId>maven-scm-provider-gitexe</artifactId>
-            <version>1.7</version>
+            <groupId>com.github.stephenc.wagon</groupId>
+            <artifactId>wagon-gitsite</artifactId>
+            <version>0.4.1</version>
           </dependency>
         </dependencies>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-scm-plugin</artifactId>
-        <version>1.7</version>
       </plugin>
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
@@ -134,31 +114,13 @@
         <artifactId>maven-deploy-plugin</artifactId>
         <version>2.7</version>
       </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-scm-plugin</artifactId>
+        <version>1.7</version>
+      </plugin>
     </plugins>
-    <extensions>
-      <extension>
-        <groupId>org.apache.maven.wagon</groupId>
-        <artifactId>wagon-scm</artifactId>
-        <version>2.2</version>
-      </extension>
-      <extension>
-        <groupId>org.apache.maven.scm</groupId>
-        <artifactId>maven-scm-manager-plexus</artifactId>
-        <version>1.7</version>
-      </extension>
-      <extension>
-        <groupId>org.apache.maven.scm</groupId>
-        <artifactId>maven-scm-provider-gitexe</artifactId>
-        <version>1.7</version>
-      </extension>
-      <extension>
-        <groupId>org.apache.maven.wagon</groupId>
-        <artifactId>wagon-ssh</artifactId>
-        <version>2.2</version>
-      </extension>
-    </extensions>
   </build>
-
 
   <dependencies>
     <dependency>
@@ -172,9 +134,9 @@
       <version>4.2</version>
     </dependency>
     <dependency>
-    	<groupId>org.pushingpixels</groupId>
-    	<artifactId>trident</artifactId>
-    	<version>1.3</version>
+      <groupId>org.pushingpixels</groupId>
+      <artifactId>trident</artifactId>
+      <version>1.3</version>
     </dependency>
     <dependency>
       <groupId>junit</groupId>
@@ -184,8 +146,8 @@
     </dependency>
   </dependencies>
   <scm>
-    <url>scm:git:git@github.com:kompiro/notification-by-swing.git</url>
-    <connection>scm:git:git:git@github.com:kompiro/notification-by-swing.git</connection>
+    <url>http://github.com/kompiro/notification-by-swing/tree/master</url>
+    <connection>scm:git:git@github.com:kompiro/notification-by-swing.git</connection>
     <developerConnection>scm:git:git@github.com:kompiro/notification-by-swing.git</developerConnection>
     <tag>HEAD</tag>
   </scm>
