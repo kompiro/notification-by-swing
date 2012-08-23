@@ -33,7 +33,7 @@ class NotificationPanel extends JPanel {
 	 */
 	NotificationPanel() {
 		setBorder(LineBorder.createGrayLineBorder());
-		setLayout(new MigLayout("insets 0", "[:50:][:150:][]", "[][][]"));
+		setLayout(new MigLayout("insets 0 0 12 0", "[:50:][:150:][]", "[][][]"));
 		setOpaque(false);
 		
 		icon = new JLabel();

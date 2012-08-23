@@ -17,6 +17,9 @@ import javax.swing.Timer;
 
 import org.pushingpixels.trident.Timeline;
 import org.pushingpixels.trident.TridentConfig;
+import org.pushingpixels.trident.Timeline.TimelineState;
+import org.pushingpixels.trident.callback.TimelineCallback;
+import org.pushingpixels.trident.ease.Sine;
 import org.pushingpixels.trident.interpolator.PropertyInterpolator;
 import org.pushingpixels.trident.swing.AWTPropertyInterpolators;
 
@@ -121,13 +124,29 @@ public class NotificationWindow extends JWindow{
 		this.setLocation(x, y);
 		this.setVisible(true);
 
-		Timeline moveTimeline = new Timeline(this);
+		final Timeline moveTimeline = new Timeline(this);
 		moveTimeline.addPropertyToInterpolate("location", new Point(x, y), new Point(x,y - this.getHeight() - border));
+		moveTimeline.setEase(new Sine());
 		int delay = duration + (int) moveTimeline.getDuration();
 		Timer hideTimer = new Timer(delay, new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent event) {
-				close();
+				moveTimeline.addCallback(new TimelineCallback() {
+					
+					@Override
+					public void onTimelineStateChanged(TimelineState oldState,
+							TimelineState newState, float durationFraction,
+							float timelinePosition) {
+						if(newState.equals(TimelineState.DONE)){
+							close();
+						}
+					}
+					
+					@Override
+					public void onTimelinePulse(float durationFraction, float timelinePosition) {
+					}
+				});
+				moveTimeline.replayReverse();
 			}
 
 		});
