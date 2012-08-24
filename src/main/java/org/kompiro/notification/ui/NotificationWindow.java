@@ -9,6 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.net.URL;
 import java.util.Set;
 
@@ -156,12 +157,18 @@ public class NotificationWindow extends JWindow{
 		}
 	}
 
-	private void close() {
+	public void close() {
 		setVisible(false);
 		notifyClose();
 	}
 	
 	protected void notifyClose() {
+	}
+	
+	@Override
+	public synchronized void addMouseListener(MouseListener l) {
+		super.addMouseListener(l);
+		contentPane.addMouseListener(l);
 	}
 	
 }

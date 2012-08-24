@@ -91,5 +91,13 @@ class NotificationPanel extends JPanel {
 	void addCloseMouseListener(MouseListener listener){
 		closeIcon.addMouseListener(listener);
 	}
+	
+	@Override
+	public synchronized void addMouseListener(MouseListener l) {
+		super.addMouseListener(l);
+		title.addMouseListener(l);
+		message.addMouseListener(l);
+		icon.addMouseListener(l);
+	}
 
 }
