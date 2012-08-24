@@ -57,6 +57,7 @@ public class NotificationWindow extends JWindow{
         		close();
         	}
 		});
+        setAlwaysOnTop(true);
 	}
 	
 	/**
