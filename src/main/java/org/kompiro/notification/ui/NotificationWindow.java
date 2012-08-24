@@ -159,7 +159,7 @@ public class NotificationWindow extends JWindow{
 	}
 
 	public void close() {
-		setVisible(false);
+		dispose();
 		notifyClose();
 	}
 	
