@@ -1,6 +1,7 @@
 package org.kompiro.notification.ui;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
 import java.awt.Point;
@@ -114,6 +115,23 @@ public class NotificationWindow extends JWindow{
 	 */
 	public void setStickMode(boolean stickMode){
 		this.stickMode = stickMode;
+	}
+	
+	/**
+	 * set window size
+	 * @param size
+	 */
+	public void setSize(Dimension size){
+		contentPane.setSize(size);
+	}
+	
+	/**
+	 * set window size
+	 * @param width
+	 * @param height
+	 */
+	public void setSize(int width, int height){
+		contentPane.setSize(width, height);
 	}
 	
 	public void notifyUI(){

@@ -2,7 +2,6 @@ package org.kompiro.notification.ui;
 
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Font;
 import java.awt.GradientPaint;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -33,14 +32,14 @@ class NotificationPanel extends JPanel {
 	 */
 	NotificationPanel() {
 		setBorder(LineBorder.createGrayLineBorder());
-		setLayout(new MigLayout("insets 0 0 12 0", "[:50:][:150:][]", "[][][]"));
+		setLayout(new MigLayout("insets 0 0 12 0", "[:50:][][]", "[][][]"));
 		setOpaque(false);
 		
 		icon = new JLabel();
 		add(icon, "cell 0 0,span 1 3,center");
 		
 		title = new JLabel();
-		title.setFont(new Font(Font.MONOSPACED, Font.PLAIN, 16));
+		title.setFont(title.getFont().deriveFont(16));
 		add(title, "cell 1 1");
 		
 		closeIcon = new JLabel(new ImageIcon(URL_OF_CLOSE_ICON));
@@ -49,7 +48,7 @@ class NotificationPanel extends JPanel {
 		message = new JTextArea();
 		message.setEditable(false);
 		message.setLineWrap(true);
-		message.setSize(new Dimension(200,60));
+		message.setSize(new Dimension(300,60));
 		message.setOpaque(false);
 		add(message, "cell 1 2");
 		setColor(DEFAULT_COLOR);
@@ -87,6 +86,15 @@ class NotificationPanel extends JPanel {
 	void setColor(Color color) {
 		setBackground(color);
 	}
+	
+	public void setSize(Dimension size){
+		this.message.setSize(size);
+	}
+
+	public void setSize(int width, int height){
+		this.message.setSize(width ,height);
+	}
+
 	
 	void addCloseMouseListener(MouseListener listener){
 		closeIcon.addMouseListener(listener);
