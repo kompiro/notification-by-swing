@@ -14,6 +14,7 @@ import java.awt.event.MouseListener;
 import java.net.URL;
 import java.util.Set;
 
+import javax.swing.JFrame;
 import javax.swing.JWindow;
 import javax.swing.Timer;
 
@@ -49,6 +50,11 @@ public class NotificationWindow extends JWindow{
 	}
 	
 	public NotificationWindow() {
+		this(null);
+	}
+	
+	public NotificationWindow(JFrame parent){
+		super(parent);
 		contentPane = new NotificationPanel();
         contentPane.setOpaque(false);
         setContentPane(contentPane);
@@ -58,7 +64,7 @@ public class NotificationWindow extends JWindow{
         		close();
         	}
 		});
-        setAlwaysOnTop(true);
+        setAlwaysOnTop(true);		
 	}
 	
 	/**
@@ -87,6 +93,7 @@ public class NotificationWindow extends JWindow{
 	
 	/**
 	 * set window color
+	 * 
 	 * @param color
 	 */
 	public void setColor(final Color color){
