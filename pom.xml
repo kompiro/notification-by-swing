@@ -3,7 +3,7 @@
 
   <groupId>org.kompiro.notification</groupId>
   <artifactId>ui</artifactId>
-  <version>0.0.7-SNAPSHOT</version>
+  <version>0.0.7</version>
   <packaging>jar</packaging>
   <licenses>
     <license>
